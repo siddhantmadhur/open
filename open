@@ -9,4 +9,9 @@ filetype=$(xdg-mime query filetype $1)
 
 program=$(xdg-mime query default $filetype)
 
+if [ -z $program ]; then
+    echo "No program found to open: $1"
+    exit 1
+fi
+
 gtk-launch $program $1 
