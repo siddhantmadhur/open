@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ "$#" -eq 0 ]; then
+    echo "No arguments provided"
+    exit 1
+fi
+
+filetype=$(xdg-mime query filetype $1)
+
+program=$(xdg-mime query default $filetype)
+
+gtk-launch $program $1 
